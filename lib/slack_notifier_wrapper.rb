@@ -1,4 +1,5 @@
 require "slack_notifier_wrapper/version"
+require "slack_notifier_wrapper/helpers"
 
 module SlackNotifierWrapper
 
@@ -44,3 +45,4 @@ module SlackNotifierWrapper
   end
 
 end
+
