@@ -1,10 +1,9 @@
 # SlackNotifierWrapper
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/slack_notifier_wrapper`. To experiment with that code, run `bin/console` for an interactive prompt.
+[slack-notifier](https://github.com/stevenosloan/slack-notifier) is an awesome gem for sending notifications to Slack with Ruby and this wrapper gem lets you push Slack notifications with a different syntax.
 
-TODO: Delete this and the text above, and describe your gem
 
-## Installation
+## Installation & Setup
 
 Add this line to your application's Gemfile:
 
@@ -12,27 +11,33 @@ Add this line to your application's Gemfile:
 gem 'slack_notifier_wrapper'
 ```
 
-And then execute:
+Configure the gem with default settings:
 
-    $ bundle
+```ruby
+SlackNotifierWrapper.config do
+  slack_webhook_url "webhook url"
+  default_channel "#some-channel"
+  username "Bob"
+  icon_emoji ":bob:"
+end
+```
 
-Or install it yourself as:
+Use the gem to speak messages to the default Slack channel:
 
-    $ gem install slack_notifier_wrapper
+```ruby
+SlackNotifierWrapper.speak("This is some message")
+```
 
-## Usage
+Access the notifier object directly and specify overrides if you'd like to override the defaults:
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+notifier = SlackNotifierWrapper.notifier
+notifier.ping "Whatever", channel: "#devnull"
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/slack_notifier_wrapper.
+Bug reports and pull requests are welcome on GitHub at https://github.com/MrPowers/slack_notifier_wrapper.
 
 
 ## License
