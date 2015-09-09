@@ -10,12 +10,12 @@ module SlackNotifierWrapper
     end
 
     def speak_attachments(args)
-      {
+      attachments = {
         text: args.fetch(:attachment_message, ""),
         color: args.fetch(:color, "good"),
         mrkdwn_in: ["text"]
       }
-      notifier.ping args.fetch(:message, ""), icon_emoji: @icon_emoji, attachments: [attachments]
+      notifier.ping(args.fetch(:message, ""), icon_emoji: @icon_emoji, attachments: [attachments])
     end
 
     def notifier
