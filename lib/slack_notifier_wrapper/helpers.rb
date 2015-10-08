@@ -5,7 +5,7 @@ module SlackNotifierWrapper
       begin
         send(method_name)
       rescue Exception => e
-        attachment_message = "#{self.class}##{method_name} failed to execute"
+        attachment_message = "#{self.class}##{method_name} failed to execute: #{e.message}"
         SlackNotifierWrapper.speak_attachments({ color: "danger", attachment_message: attachment_message })
         raise e
       end
